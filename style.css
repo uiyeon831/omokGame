@@ -1,0 +1,294 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+
+
+
+main {
+  margin-left: 0 20px 0 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(235, 219, 195);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.result_board_replay {
+  width: 750px;
+  min-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+
+#board {
+  min-width: 700px;
+  min-height: 700px;
+  background-color: rgb(223, 174, 101);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#board .row {
+  display: flex;
+}
+
+#board .row > div {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  /* border: 1px solid #8B4513; */
+}
+
+#board .row > div::before, 
+#board .row > div::after {
+  content: "";
+  position: absolute;
+  background: #8B4513;
+}
+
+#board .row > div::before {
+  left: 50%;
+  height: 1px;
+  width: 100%;
+}
+
+#board .row > div::after {
+  top: 50%;
+  width: 1px;
+  height: 100%;
+}
+
+#board .row:first-child > div::before {
+  height: 2px;
+  top: 50%;
+}
+
+#board .row:last-child > div::before {
+  height: 2px;
+  bottom: 50%;
+}
+
+#board .row > div:first-child::after {
+  width: 3px;
+  left: 50%;
+}
+
+#board .row > div:last-child::after {
+  width: 2px;
+  right: 50%;
+}
+
+#board .row > div:last-child::before {
+  display: none;
+}
+
+#board .row:last-child > div::after {
+  display: none;
+}
+
+/* 바둑알 */
+#board .row > div > div {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+
+
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 320px;
+}
+
+.who {
+  width: 150px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.playericon {
+  width: 100px;
+  height: 100px;
+  justify-content: start;
+}
+
+.player > div > p {
+  font-weight: 600;
+  text-align: center;
+}
+
+.player > div > .lastP {
+  font-size: 23px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.replayResetBtn {
+  display: flex;
+  gap: 80px;
+}
+
+.button {
+  width: 200px;
+  height: 80px;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: #e0c9a8;
+  border: none;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #d7b98e;
+  cursor: pointer;
+}
+
+.replayBoard {
+  width: 230px;
+  height: 100px;
+}
+
+.empty {
+  width: 85px;
+  height: 30px;
+  background-color: rgb(235, 219, 195);
+  border: none
+}
+
+.black {
+  background-color: black;
+}
+
+.white {
+  background-color: white;
+}
+
+.none {
+  background-color: none;
+}
+
+.resultBoard {
+  width: 750px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+#result {
+  font-size: 70px;
+  font-weight: 600;
+  text-align: center;
+  line-height: normal;
+  background: linear-gradient(to right top, #7e014a, #ffa69e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.resultNone {
+  display: none;
+}
+
+.resultBlock {
+  display: block;
+}
+
+#score {
+  font-size: 45px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#score > span {
+  color: white;
+  -webkit-text-stroke: 2px black;
+}
+
+#score > span:last-child {
+  color: black;
+  -webkit-text-stroke: 2px white;
+}
+
+.player_focus > img {
+  width: 150px;
+  height: 150px;
+}
+
+.player_focus > p {
+  color: #bd006e;
+  font-size: 25px;
+}
+.player_focus > p:last-child {
+  font-size: 40px;
+}
+

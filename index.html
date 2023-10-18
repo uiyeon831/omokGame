@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmokGame</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <div class="player" id="left">
+      <div class="who">
+        <img src="player1.png" class="playericon" id="playericon1">
+        <p>player</p>
+        <p class="lastP">White</p>
+      </div>
+        <div class="empty"></div>
+    </div>
+
+    <div class="result_board_replay">
+      <div class="resultBoard">
+        <p id="result">Play the Omok Game!</p>
+        <div id="score"></div>
+      </div>
+      <div id="board"></div>
+      <div class="replayResetBtn"> 
+        <button id="replay" class="replay button">다음판</button>
+        <button id="reset" class="button">처음부터</button>
+      </div>
+    </div>
+
+    <div class="player" id="right">
+      <div class="who">
+        <img src="player2.png" class="playericon" id="playericon2">
+        <p>player</p>
+        <p class="lastP">Black</p>
+      </div>
+      <div class="empty"></div>
+    </div>
+
+  </main>
+
+  <script src="omok.js"></script>
+</body>
+</html>
