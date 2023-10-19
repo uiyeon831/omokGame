@@ -119,12 +119,12 @@ main {
 }
 
 #board .row:first-child > div::before {
-  height: 2px;
+  height: 3px;
   top: 50%;
 }
 
 #board .row:last-child > div::before {
-  height: 2px;
+  height: 3px;
   bottom: 50%;
 }
 
@@ -134,7 +134,7 @@ main {
 }
 
 #board .row > div:last-child::after {
-  width: 2px;
+  width: 3px;
   right: 50%;
 }
 
@@ -148,8 +148,8 @@ main {
 
 /* 바둑알 */
 #board .row > div > div {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   z-index: 1;
 }

@@ -19,7 +19,7 @@ let BlackScore = 0;
 //게임 초기화
 function resetBoard() {
   result.innerHTML = "Play the Omok Game!";
-  replay.className = "resultNone button";
+  // replay.className = "resultNone button";
   scoreP.innerHTML = "";
   scoreP2.innerHTML = "";
   board = Array(boardSize).fill().map(() => Array(boardSize).fill(""));
@@ -36,8 +36,35 @@ resetEl.addEventListener("click", () => {
 
 //"다음판" 버튼
 replayEl.addEventListener("click", () => {
+  if(WhiteScore === 0 && BlackScore === 0){
+    currentPlayer = "Black";
+  }else {
+    previousPlayer = currentPlayer;
+    currentPlayer = currentPlayer === "Black" ? "White" : "Black";  
+  }
   resetBoard();
 });
+
+//현재 플레이어 표시
+function playerDisplay() {
+  if(currentPlayer === "Black"){
+    playerwho[0].className = "who";
+    playerwho[1].className = "who player_focus";
+
+  } else if(currentPlayer === "White") {
+    playerwho[0].className = "who player_focus";
+    playerwho[1].className = "who";
+  } 
+}
+
+//스코어 표시
+function score() {
+  scoreText.className = "resultBlock";
+  scoreP.innerHTML = `White  ${WhiteScore} : `;
+  scoreP2.innerHTML = `${BlackScore}  Black`;
+  scoreText.appendChild(scoreP);
+  scoreText.appendChild(scoreP2);
+}
 
 // 승리 확인 메소드
 function checkWin(i, j) {
@@ -66,11 +93,12 @@ function checkLine(row, col, dRow, dCol) {
 
 //바둑알 놓기
 function playGo(i, j, e){
+  console.log(i, j)
   if (board[i][j] !== "") return;
   if(board[i][j] === "Block") return;
   board[i][j] = currentPlayer;
 
-  const cellEl = document.getElementsByClassName(""+i+j);
+  const cellEl = document.getElementsByClassName("i"+i+"j"+j);
 
   const stoneEl = document.createElement("div");
   if(board[i][j] === "Black") {
@@ -103,15 +131,13 @@ function playGo(i, j, e){
         }
       }
     }
-
-    replay.className = "resultBlock button";
+    // replay.className = "resultBlock button";
   } else {
     previousPlayer = currentPlayer;
     currentPlayer = currentPlayer === "Black" ? "White" : "Black";  
     playerDisplay();
   }
 }
-
 
 //바둑판 그리기
 function drawBoard() {
@@ -121,7 +147,7 @@ function drawBoard() {
     rowEl.className = "row";
     for(let j = 0; j < boardSize; j++){
       const cellEl = document.createElement("div");
-      cellEl.className = "cell " + i + j;
+      cellEl.className = "cell " + "i" + i + "j" + j;
       cellEl.addEventListener("click", (e) => {
         if(board[i][j] === "") playGo(i, j, e)
       });
@@ -131,29 +157,6 @@ function drawBoard() {
   }
   playerDisplay();
   score();
-}
-
-
-
-//현재 플레이어 표시
-function playerDisplay() {
-  if(currentPlayer === "Black"){
-    playerwho[0].className = "who";
-    playerwho[1].className = "who player_focus";
-
-  } else if(currentPlayer === "White") {
-    playerwho[0].className = "who player_focus";
-    playerwho[1].className = "who";
-  } 
-}
-
-//스코어 표시
-function score() {
-  scoreText.className = "resultBlock";
-  scoreP.innerHTML = `White  ${WhiteScore} : `;
-  scoreP2.innerHTML = `${BlackScore}  Black`;
-  scoreText.appendChild(scoreP);
-  scoreText.appendChild(scoreP2);
 }
 
 //게임시작
