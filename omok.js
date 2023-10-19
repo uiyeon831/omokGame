@@ -19,7 +19,7 @@ let BlackScore = 0;
 //게임 초기화
 function resetBoard() {
   result.innerHTML = "Play the Omok Game!";
-  // replay.className = "resultNone button";
+  replay.innerHTML = "다시하기";
   scoreP.innerHTML = "";
   scoreP2.innerHTML = "";
   board = Array(boardSize).fill().map(() => Array(boardSize).fill(""));
@@ -131,7 +131,7 @@ function playGo(i, j, e){
         }
       }
     }
-    // replay.className = "resultBlock button";
+    replay.innerHTML = "다음판";
   } else {
     previousPlayer = currentPlayer;
     currentPlayer = currentPlayer === "Black" ? "White" : "Black";  
